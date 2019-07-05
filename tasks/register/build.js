@@ -17,6 +17,6 @@ module.exports = function(grunt) {
     // 'babel',        //« uncomment to ALSO transpile during development (for broader browser compat.)
     'linkAssetsBuild',
     'clean:build',
-    'copy:build'
+    'copy:build',
   ]);
 };

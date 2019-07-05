@@ -12,16 +12,12 @@
  *   https://sailsjs.com/anatomy/tasks/register/default.js
  *
  */
-module.exports = function (grunt) {
-
-
+module.exports = function(grunt) {
   grunt.registerTask('default', [
     // 'polyfill:dev', //« uncomment to ALSO transpile during development (for broader browser compat.)
     'compileAssets',
     // 'babel',        //« uncomment to ALSO transpile during development (for broader browser compat.)
     'linkAssets',
-    'watch'
+    'watch',
   ]);
-
-
 };

@@ -10,31 +10,36 @@
  *
  */
 module.exports = function(grunt) {
-
   grunt.config.set('copy', {
     dev: {
-      files: [{
-        expand: true,
-        cwd: './assets',
-        src: ['**/*.!(coffee|less)'],
-        dest: '.tmp/public'
-      }]
+      files: [
+        {
+          expand: true,
+          cwd: './assets',
+          src: ['**/*.!(coffee|less)'],
+          dest: '.tmp/public',
+        },
+      ],
     },
     build: {
-      files: [{
-        expand: true,
-        cwd: '.tmp/public',
-        src: ['**/*'],
-        dest: 'www'
-      }]
+      files: [
+        {
+          expand: true,
+          cwd: '.tmp/public',
+          src: ['**/*'],
+          dest: 'www',
+        },
+      ],
     },
     beforeLinkBuildProd: {
-      files: [{
-        expand: true,
-        cwd: '.tmp/public/hash',
-        src: ['**/*'],
-        dest: '.tmp/public/dist'
-      }]
+      files: [
+        {
+          expand: true,
+          cwd: '.tmp/public/hash',
+          src: ['**/*'],
+          dest: '.tmp/public/dist',
+        },
+      ],
     },
   });
 
@@ -61,5 +66,4 @@ module.exports = function(grunt) {
   // grunt.loadNpmTasks('grunt-contrib-copy');
   // ```
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 };
