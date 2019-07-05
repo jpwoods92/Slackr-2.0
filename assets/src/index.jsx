@@ -2,13 +2,7 @@ import React from 'react';
 import { AppContainer } from 'react-hot-loader';
 import ReactDOM from 'react-dom';
 
-const App = () => {
-  return (
-    <div>
-        Simple Sails-React starter
-    </div>
-  );
-};
+import App from './App';
 
 const MOUNT_NODE = document.getElementById('root');
 
@@ -25,6 +19,6 @@ render(App);
 
 // Webpack Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./containers/app', () => { render(App); });
+  module.hot.accept('./App', () => { render(App); });
 }
 
