@@ -75,7 +75,7 @@
     "type": "git",
     "url": "git://github.com/jackson/slackr-2-0.git"
   },
-  "author": "jackson",
+  "author": "Jackson Woods <jacksonpwoods@gmail.com>",
   "license": "",
   "engines": {
     "node": "^8.9"
