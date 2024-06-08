@@ -19,17 +19,15 @@ import HttpStatusCodes from '@src/common/HttpStatusCodes';
 import RouteError from '@src/common/RouteError';
 import { NodeEnvs } from '@src/common/misc';
 
-
 // **** Variables **** //
 
 const app = express();
-
 
 // **** Setup **** //
 
 // Basic middleware
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(EnvVars.CookieProps.Secret));
 
 // Show routes called in console during development
@@ -46,23 +44,24 @@ if (EnvVars.NodeEnv === NodeEnvs.Production.valueOf()) {
 app.use(Paths.Base, BaseRouter);
 
 // Add error handler
-app.use((
-  err: Error,
-  _: Request,
-  res: Response,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  next: NextFunction,
-) => {
-  if (EnvVars.NodeEnv !== NodeEnvs.Test.valueOf()) {
-    logger.err(err, true);
+app.use(
+  (
+    err: Error,
+    _: Request,
+    res: Response,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    next: NextFunction
+  ) => {
+    if (EnvVars.NodeEnv !== NodeEnvs.Test.valueOf()) {
+      logger.err(err, true);
+    }
+    let status = HttpStatusCodes.BAD_REQUEST;
+    if (err instanceof RouteError) {
+      status = err.status;
+    }
+    return res.status(status).json({ error: err.message });
   }
-  let status = HttpStatusCodes.BAD_REQUEST;
-  if (err instanceof RouteError) {
-    status = err.status;
-  }
-  return res.status(status).json({ error: err.message });
-});
-
+);
 
 // **** Front-End Content **** //
 
@@ -83,7 +82,6 @@ app.get('/', (_: Request, res: Response) => {
 app.get('/users', (_: Request, res: Response) => {
   return res.sendFile('users.html', { root: viewsDir });
 });
-
 
 // **** Export default **** //
 
