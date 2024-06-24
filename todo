@@ -1,0 +1,5 @@
+1. setup envs
+    c. add db creds
+2. setup db
+3. migrate api logic
+4. migrate client logic
